@@ -1,7 +1,93 @@
+html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
 
-  select {
-    display:block;
-    padding:10px 15px;
-    margin-top: 10px;
-    border-radius: 5px;
-  }
+    body {
+      font-family: Manrope, sans-serif;
+      background-image: url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/163/037/original/pexels-photo-smaller.jpg?1744621742');
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      letter-spacing: 1px;
+      color: azure;
+    }
+
+    .page-container {
+      flex: 1;
+      width: 450px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      font-weight: 300;
+      font-size: 60px;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      margin: 0;
+      font-weight: 500;
+    }
+
+    select {
+      display: block;
+      padding: 10px 15px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    .city {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(251, 251, 4, 0.2);
+      padding: 2px;
+    }
+
+    .time {
+      font-size: 40px;
+      font-weight: 200;
+    }
+
+    .colon {
+      color: #fdf61f;
+      font-weight: 400;
+    }
+
+    .date {
+      margin-top: 2px;
+      font-size: 13px;
+      font-weight: 100;
+      opacity: 0.7;
+    }
+
+    .footer-container {
+      background: rgba(4, 4, 4, 0.9);
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 20px;
+      box-sizing: border-box;
+      font-size: 12px;
+      color: #fff;
+    }
+
+    .footer-container p {
+      margin: 0;
+      padding: 20px 20px;
+    }
+
+    a:link {
+      color: #b18b01;
+    }
+
+    a:visited {
+      color: #3eaf01;
+    }
