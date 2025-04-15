@@ -1,4 +1,12 @@
 
+//Make Array of timezones >> timezone determines the city
+//
+//Make array of formats
+// Make function for timezones
+
+//const cities = ["Europe/London", "Europe/Paris", "Asia/Shanghai", "Asia/Tokyo", "America/New_York"];
+
+
 let dateLondon = moment().tz("Europe/London").format("dddd [the] Do [of] MMMM");
 let dateParis = moment().tz("Europe/Paris").format("dddd [the] Do [of] MMMM");
 let dateBeijing = moment().tz("Asia/Shanghai").format("dddd [the] Do [of] MMMM");
@@ -34,5 +42,5 @@ timeTokyoElement.innerHTML = `${timeTokyo}`;
 let dateNYCElement = document.querySelector("#dateNYC");
 dateNYCElement.innerHTML = `It is ${dateNYC}`;
 let timeNYCElement = document.querySelector("#timeNYC");
-timeNYCElement.innerHTML = `${timeNYC}`;
+timeNYCElement.innerHTML = `${timeNYC}`; no
 
