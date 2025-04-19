@@ -5,7 +5,7 @@ function updateCityTime(cityId, timezone) {
 
   if (dateElement && timeElement) {
     dateElement.innerHTML = `It is ${now.format("dddd [the] Do [of] MMMM")}`;
-    timeElement.innerHTML = now.format("HH:mm");
+    timeElement.innerHTML = now.format("HH:mm"); // 24 hrs format
   }
 }
 
@@ -40,7 +40,7 @@ function updateCurrentLocationTime() {
     "Asia/Hong_Kong": { name: "🇭🇰 Hong Kong" },
     "Asia/Bangkok": { name: "🇹🇭 Bangkok" },
     "Australia/Sydney": { name: "🇦🇺 Sydney" },
-  };
+  }; // if a timezone is not in the map, the world emoji displays
 
   const currentCityName = timezoneMap[timezone]
     ? timezoneMap[timezone].name
