@@ -1,46 +1,53 @@
+function updateCityTime(cityId, timezone) {
+  const now = moment().tz(timezone);
+  const dateElement = document.querySelector(`#date${cityId}`);
+  const timeElement = document.querySelector(`#time${cityId}`);
 
-//Make Array of timezones >> timezone determines the city
-//
-//Make array of formats
-// Make function for timezones
+  if (dateElement && timeElement) {
+    dateElement.innerHTML = `It is ${now.format("dddd [the] Do [of] MMMM")}`;
+    timeElement.innerHTML = now.format("h:mm");
+  }
+}
 
-//const cities = ["Europe/London", "Europe/Paris", "Asia/Shanghai", "Asia/Tokyo", "America/New_York"];
+function updateAllCities() {
+  const cities = [
+    { id: "London", timezone: "Europe/London" },
+    { id: "Beijing", timezone: "Asia/Shanghai" },
+    { id: "NYC", timezone: "America/New_York" },
+    { id: "Tokyo", timezone: "Asia/Tokyo" }
+  ];
 
+  cities.forEach(city => updateCityTime(city.id, city.timezone));
+  updateCurrentLocationTime(); // update user's current time too
+}
 
-let dateLondon = moment().tz("Europe/London").format("dddd [the] Do [of] MMMM");
-let dateParis = moment().tz("Europe/Paris").format("dddd [the] Do [of] MMMM");
-let dateBeijing = moment().tz("Asia/Shanghai").format("dddd [the] Do [of] MMMM");
-let dateTokyo = moment().tz("Asia/Tokyo").format("dddd [the] Do [of] MMMM");
-let dateNYC = moment().tz("America/New_York").format("dddd [the] Do [of] MMMM");
+function updateCurrentLocationTime() {
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  updateCityTime("Current", timezone);
+}
 
-let timeLondon = moment().tz("Europe/London").format("h:mm");
-let timeParis = moment().tz("Europe/Paris").format("h:mm");
-let timeBeijing = moment().tz("Asia/Shanghai").format("h:mm");
-let timeTokyo = moment().tz("Asia/Tokyo").format("h:mm");
-let timeNYC = moment().tz("America/New_York").format("h:mm");
+// Replaces the NY block with selected city
+function updateCustomCity(name, timezone) {
+  document.getElementById("nycCityName").innerText = name;
+  updateCityTime("NYC", timezone);
+}
 
-let dateLondonElement = document.querySelector("#dateLondon");
-dateLondonElement.innerHTML = `It is ${dateLondon}`;
-let timeLondonElement = document.querySelector("#timeLondon");
-timeLondonElement.innerHTML = `${timeLondon}`;
+// Handle dropdown selection
+document.getElementById("cities").addEventListener("change", function (event) {
+  const selected = event.target.value;
 
-let dateParisElement = document.querySelector("#dateParis");
-dateParisElement.innerHTML = `It is ${dateParis}`;
-let timeParisElement = document.querySelector("#timeParis");
-timeParisElement.innerHTML = `${timeParis}`;
+  const cityMap = {
+    london: { name: "🇦🇺 Sydney", timezone: "Australia/Sydney" },
+    paris: { name: "🇭🇰 Hongkong", timezone: "Asia/Hong_Kong" },
+    newYork: { name: "🇦🇪 Dubai", timezone: "Asia/Dubai" },
+    sydney: { name: "🇹🇭 Bangkok", timezone: "Asia/Bangkok" }
+  };
 
-let dateBeijingElement = document.querySelector("#dateBeijing");
-dateBeijingElement.innerHTML = `It is ${dateBeijing}`;
-let timeBeijingElement = document.querySelector("#timeBeijing");
-timeBeijingElement.innerHTML = `${timeBeijing}`;
+  const cityInfo = cityMap[selected];
+  if (cityInfo) {
+    updateCustomCity(cityInfo.name, cityInfo.timezone);
+  }
+});
 
-let dateTokyoElement = document.querySelector("#dateTokyo");
-dateTokyoElement.innerHTML = `It is ${dateTokyo}`;
-let timeTokyoElement = document.querySelector("#timeTokyo");
-timeTokyoElement.innerHTML = `${timeTokyo}`;
-
-let dateNYCElement = document.querySelector("#dateNYC");
-dateNYCElement.innerHTML = `It is ${dateNYC}`;
-let timeNYCElement = document.querySelector("#timeNYC");
-timeNYCElement.innerHTML = `${timeNYC}`; no
-
+updateAllCities();
+setInterval(updateAllCities, 1000);

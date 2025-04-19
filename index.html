@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="src/index.css" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Murecho:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.47/moment-timezone-with-data-1970-2030.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.47/moment-timezone-with-data-1970-2030.min.js"></script>
   <title>World Clock</title>
 </head>
 <body>
   <div class="page-container">
     <h1>World Clock</h1>
-    <form action="/choose">
-      <label for="cities">Choose a city</label>
+    <form>
+      <label for="cities">Choose a city to replace New York</label>
       <select name="cities" id="cities">
         <option value="">Make your choice</option>
-        <option value="current">Your current location</option>
         <option value="london">Sydney</option>
         <option value="paris">Hongkong</option>
         <option value="newYork">Dubai</option>
-        <option value="Sydney">Bangkok</option>
+        <option value="sydney">Bangkok</option>
       </select>
     </form>
+
+    <!-- Current location block -->
+    <div class="city" id="currentCity">
+      <div>
+        <h2 id="currentCityName">🌍 Your Location</h2>
+        <div class="date" id="dateCurrent"></div>
+      </div>
+      <div>
+        <div class="time" id="timeCurrent"></div>
+      </div>
+    </div>
 
     <div class="city">
       <div><h2>🇬🇧 London</h2>
@@ -33,27 +43,21 @@
     </div>
 
     <div class="city">
-      <div><h2>🇫🇷 Paris</h2>
-      <div class="date" id="dateParis"></div></div>
-      <div><div class="time" id="timeParis"></div></div>
-    </div>
-
-    <div class="city">
       <div><h2>🇨🇳 Beijing</h2>
       <div class="date" id="dateBeijing"></div></div>
-      <div><div class="time" id="timeBeijing">05<span class="colon">:</span>15</div></div>
+      <div><div class="time" id="timeBeijing"></div></div>
+    </div>
+
+    <div class="city" id="NYCBlock">
+      <div><h2 id="nycCityName">🇺🇸 New York City</h2>
+      <div class="date" id="dateNYC"></div></div>
+      <div><div class="time" id="timeNYC"></div></div>
     </div>
 
     <div class="city">
       <div><h2>🇯🇵 Tokyo</h2>
       <div class="date" id="dateTokyo"></div></div>
-      <div><div class="time" id="timeTokyo">03<span class="colon">:</span>12</div></div>
-    </div>
-
-    <div class="city">
-      <div><h2>🇺🇸 New York City</h2>
-      <div class="date" id="dateNYC"></div></div>
-      <div><div class="time" id="timeNYC">18<span class="colon">:</span>25</div></div>
+      <div><div class="time" id="timeTokyo"></div></div>
     </div>
   </div>
 
